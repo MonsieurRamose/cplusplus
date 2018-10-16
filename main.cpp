@@ -5,6 +5,9 @@
 #include "policier.h"
 #include "heritiere.h"
 #include "bijou.h"
+#include "alea.h"
+
+using namespace std;
 
 int main()
 {
@@ -20,10 +23,13 @@ int main()
     // Bijou *b = new Bijou ("bague", 545);
     // std::cout << b->getNom()<<" de valeur "<< b->getValeur()<<std::endl;
 
-    Heritiere alice("Alice");
+    // Heritiere alice("Alice");
 
-    Gangster alcapone("Alcapone", "Les voleurs");
-    alcapone.recupereBijoux(alice);
+    // Gangster alcapone("Alcapone", "Les voleurs");
+    // alcapone.recupereBijoux(alice);
+
+    cout << Alea::value() << endl;
+    cout << Alea::value() << endl;
 
     return 0;
 }
