@@ -1,6 +1,6 @@
 #include "lieu.h"
 #include <iostream>
-//mis a jour le 11 octobre
+#include <queue>
 
 long Lieu::DERNIER_NUMERO = 0;
 
@@ -304,130 +304,57 @@ int Lieu::MinDist(int *tabDist,  int n)
   return min;
 }
 
+long Lieu::distance(const std::string &moyen, Lieu* l) {
 
+    if (this->estAccessible(moyen, l))
+        return 1;
 
-long Lieu::distance(std::string transport, Lieu* lieu)
-{
-  int i = 0;
-  int k = 0;
-  if(this->nom.compare(lieu->nom)==0)
-  {
-    return 0;
-  }
-  if(this->estAccessible(transport,lieu))
-  {
-    return 1;
-  }
-  if(transport =="tous")
-  {
-    Lieu* lieuSub;
-    Lieu **tabTous=new Lieu *[nbBateau+nbTrain];
-    int *tabDist = new int[nbBateau+nbTrain];
-    for(i=0; i<nbBateau; i++)
+    Lieu* start = this;
+    
+    std::queue<std::pair<Lieu*, long> > file;
+    file.push(std::make_pair(start, 1));
+    
+    bool *visited = new bool[Lieu::DERNIER_NUMERO];
+    for (int i = 0; i < Lieu::DERNIER_NUMERO; i++)
+        visited[i] = false;
+
+    long distance = 100;
+    
+    while (!file.empty()) 
     {
-      tabTous[i]= bateau[i];
-      k++;
-    }
-    for(int j= 0; j<nbTrain; j++)
-    {
-      tabTous[j+i]=train[j];
-      k++;
-    }
-    for(i=0; i<nbBateau+nbTrain; i++)
-    {
-    //  std::cout<<"DANs "<<i <<" "<<tabTous[i]->nom <<" "<<std::endl;
-    }
-    if(k !=0)
-    {
-      for(i=0; i < k; i++)
-      {
-        lieuSub = tabTous[i];
-        this->removeConnexion(transport, tabTous[i]);
-        tabDist[i] =  1 + lieuSub->distance(transport, lieu);
-        std::cout<<"++++++++++++++++++++++++++++++++++++++++++++===DANs "<< this->nom <<" "<<tabDist[i]<<" "<<std::endl;
-      }
-      if(MinDist(tabDist, k) == 0)
-      {
-        int c;
-        bool trouve;
-        for(i=0; i<k; i++)
+        Lieu* u = file.front().first;
+        long d0 = file.front().second;
+        file.pop();
+        visited[u->numero] = true;
+        int nbTrain = u->nbTrain;
+        int nbBateau = u->nbBateau;
+
+        for(int i = 0; i < nbTrain; i++) 
         {
-          if(tabDist[i] == 0)
-          {
-             c=i;
-             trouve = true;
-          }
+            Lieu* destination = u->train[i];
+            if (u->estAccessible(moyen, destination) && !visited[destination->numero]) 
+            {
+                if (destination->getNom().compare(l->getNom()) == 0)
+                    distance = std::min(distance, d0);
+                file.push(std::make_pair(destination, d0 + 1));
+            }
         }
-        if(trouve)
+
+        for(int i = 0; i < nbBateau; i++) 
         {
-          i=0;
-          while(i<k && i != c)
-          {
-            i++;
-          }
-          for(int j=i; j<k; j++)
-          {
-            tabDist[j]=tabDist[j+1];
-          }
-          return MinDist(tabDist, k-1);
+            Lieu* destination = u->bateau[i];
+            if (u->estAccessible(moyen, destination) && !visited[destination->numero]) 
+            {
+                if (destination->getNom().compare(l->getNom()) == 0)
+                    distance = std::min(distance, d0);
+                file.push(std::make_pair(destination, d0 + 1));
+            }
         }
-      }
-    return MinDist(tabDist, k);
-    }
-    return -1;
-  }
-  /*  if(transport != "bateau" || transport!="train")
-  {
-    return -4;
-  }*/
-
-    if(transport=="bateau")
-    {
-      Lieu* bat;
-
-      if(nbBateau != 0)
-      {
-
-      int *tabDist=new int[nbBateau];
-      for(i=0;i<nbBateau;i++)
-      {
-        bat=bateau[i];
-        this->removeConnexion(transport, bateau[i]);
-
-            tabDist[i]= 1 + bat->distance(transport, lieu);
-      }
-      //std::cout <<nbBateau<< std::endl;
-      return MinDist(tabDist, nbBateau);
-    }else{
-
-      return -1;
-    }
-    }
-    if(transport=="train")
-    {
-      Lieu* tra;
-
-      if(nbTrain!= 0)
-      {
-
-        int *tabDist=new int[nbTrain];
-        for(i=0;i<nbTrain;i++)
-        {
-          tra=train[i];
-          this->removeConnexion(transport, train[i]);
-
-          tabDist[i]=1+ tra->distance(transport, lieu);
-        }
-        //std::cout <<nbBateau<< std::endl;
-        return MinDist(tabDist, nbTrain);
-    }else{
-
-      return -1;
-    }
     }
 
+    delete visited;
+    return (distance == 100) ? -1 : distance;
 }
-
 
 void Lieu::test()
 {

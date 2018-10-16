@@ -32,7 +32,7 @@ class Lieu {
     bool estAccessible(std::string, Lieu*);
     static void init();
     int MinDist(int *tabDist, int n);
-    long distance(std::string, Lieu*);
+    long distance(const std::string&, Lieu*);
     static void test();
 };
 
