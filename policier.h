@@ -17,8 +17,8 @@ class Policier :public Personnage
         Lieu* getLieu();
         void setReputation(int _reputation);
         int getReputation();
-        void recupereBijoux(Personnage &p);
-        std::list<Bijou*> enleveBijoux();
+      /*  void recupereBijoux(Personnage &p);
+        std::list<Bijou*> enleveBijoux();*/
 };
 
 

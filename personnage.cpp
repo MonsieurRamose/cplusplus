@@ -18,8 +18,8 @@ Personnage::~Personnage()
   std::cout << "Il n'y a plus rien à faire pour moi," << nom << ".Adieu!" << std::endl;
   for (std::list<Bijou*>::iterator it = possessions.begin(); it != possessions.end(); ++it)
   {
-    std::cout 
-              << "Destruction de ma possession (" << nom << "): " << (*it)->getNom() 
+    std::cout
+              << "Destruction de ma possession (" << nom << "): " << (*it)->getNom()
               << " d'une valeur de: " << (*it)->getValeur() << std::endl;
     delete (*it);
   }
@@ -85,4 +85,21 @@ void Personnage::deplace(std::string transport, Lieu* l)
 
    }
  }
+}
+
+void Personnage::recupereBijoux(Personnage& p)
+{
+  std::list<Bijou*> bijouxEnleve = p.enleveBijoux();
+
+  for (std::list<Bijou*>::iterator it = bijouxEnleve.begin(); it != bijouxEnleve.end(); ++it)
+  {
+    this->possessions.push_back(*it);
+  }
+}
+
+std::list<Bijou *> Personnage::enleveBijoux()
+{
+  std::list<Bijou*> biens = possessions;
+  possessions.clear();
+  return biens;
 }

@@ -5,7 +5,7 @@
 
 class Lieu {
 
-  static long DERNIER_NUMERO;
+  static long DERNIER_NUMERO; //un attribut statique qui attribut un numero unique à chaque lieu
 
   private:
     std::string nom;
@@ -17,7 +17,7 @@ class Lieu {
 
   public:
     Lieu();
-    Lieu(const std::string &_nom, long _nbTrain = 0, long nbBateau = 0);
+    Lieu(const std::string &_nom, long _nbTrain = 0, long nbBateau = 0);/* */
     ~Lieu();
 
   public:
@@ -30,8 +30,6 @@ class Lieu {
     void addConnexion(std::string transport, Lieu* lieu);
     void removeConnexion(std::string transport, Lieu* lieu);
     bool estAccessible(std::string, Lieu*);
-    static void init();
-    int MinDist(int *tabDist, int n);
     long distance(const std::string&, Lieu*);
     static void test();
 };

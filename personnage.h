@@ -23,8 +23,8 @@ class Personnage
     void parle(const std::string &texte);
     void deplace(std::string, Lieu* l);
 
-    virtual void recupereBijoux(Personnage& p) = 0;
-    virtual std::list<Bijou *> enleveBijoux() = 0;
+    virtual void recupereBijoux(Personnage& p);
+    virtual std::list<Bijou *> enleveBijoux();
 };
 
 #endif

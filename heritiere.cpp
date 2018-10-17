@@ -13,7 +13,7 @@ bool Heritiere::estCaptive()
 {
     return captive;
 }
-
+/*
 void Heritiere::recupereBijoux(Personnage &p)
 {
   std::list<Bijou*> bijouxEnleve = p.enleveBijoux();
@@ -29,4 +29,4 @@ std::list<Bijou*> Heritiere::enleveBijoux()
   std::list<Bijou*> biens = possessions;
   possessions.clear();
   return biens;
-}
+}*/

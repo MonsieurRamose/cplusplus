@@ -13,8 +13,8 @@ class Heritiere : public Personnage
     public:
         Heritiere(std::string _nom);
         bool estCaptive();
-        void recupereBijoux(Personnage &p);
-        std::list<Bijou*> enleveBijoux();
+        // void recupereBijoux(Personnage &p);
+        // std::list<Bijou*> enleveBijoux();
 };
 
 #endif

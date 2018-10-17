@@ -19,7 +19,7 @@ void Policier::setReputation(int _reputation)
 {
     this->reputation = _reputation;
 }
-
+/*
 void Policier::recupereBijoux(Personnage &p)
 {
   std::list<Bijou*> bijouxEnleve = p.enleveBijoux();
@@ -36,3 +36,4 @@ std::list<Bijou*> Policier::enleveBijoux()
   possessions.clear();
   return biens;
 }
+*/
