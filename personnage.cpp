@@ -72,7 +72,7 @@ void Personnage::deplace(std::string transport, Lieu* l)
      if(lieu->getNbTrain() > 0)
      {
        lieu=lieu->getTrains()[0];
-       std::cout<< "Zut! Je me suis trompé de mode, celui-ci ne va pas à"<<l->getNom()<<std::endl;
+       std::cout<< "Zut! Je me suis trompé de mode, celui-ci ne va pas à"<<l->getNom()<<" mais je me depalce à "<< lieu->getNom()<<std::endl;
      }else{
        std::cout<< "Je ne peux pas me deplacer à "<<l->getNom()<<std::endl;
      }
@@ -90,7 +90,7 @@ void Personnage::deplace(std::string transport, Lieu* l)
        if(lieu->getNbBateau() > 0)
        {
          lieu=lieu->getBateaux()[0];
-         std::cout<< "Zut! Je me suis trompé de mode, celui-ci ne va pas à"<<l->getNom()<<std::endl;
+         std::cout<< "Zut! Je me suis trompé de mode, celui-ci ne va pas à"<<l->getNom()<<" mais je me depalce à "<< lieu->getNom()<<std::endl;
        }else{
          std::cout<< "Je ne peux pas me deplacer à "<<l->getNom()<<std::endl;
        }

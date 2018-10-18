@@ -27,7 +27,9 @@ class Gangster: public Personnage
     long getRecompense();
     void setRecompense(long rec);
     bool estEnPrison();
+    void setPrison(bool b);
     long getButin();
+    void setButin(long bt);
     // Heritiere* getHeritiere();
     // void setHeritiere(Heritiere* h);
     void recupereBijoux(Personnage &p);

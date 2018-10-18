@@ -55,7 +55,7 @@ void Policier::libere(Personnage &p)
 
 void Policier::attaque(Gangster& p)
 {
-  Personnage::attaque(p);
+  Personnage::attaque(p); // appel à la methode de la super classe
   this->action();
 
   if(this->lieu->getNom().compare(p.getLieu()->getNom()) == 0) // s'ils se trouvent dans le meme lieu
@@ -64,22 +64,54 @@ void Policier::attaque(Gangster& p)
 
     double pro = (pow(0.75, 1./(getReputation()+1.))) * (1. - (pow(0.75, (10./p.getRecompense()))));
     double al = Alea::value()%2;
-    // a revoir je ne sais pas trop les probas
+    // a revoir je ne sais pas trop sur les probas
     if(al == 0)
     {
       // le policier gagne
       this->incrementePopularite();
       this->parle(p.getNom() +" je vous arrete. Vous avez le droit de garder le silence");
+
       if(p.getPers() != NULL)
       {
         // le gangster detient une Heritiere
-        this->libere(p);
 
+        this->libere(p);            /*liberer l'heritiere detenue par le gangster p*/
       }else{
         // le gangster n'a pas detenu d'heritiere
-
-
+          if(p.getButin() >= 3 * p.getRecompense())
+          {
+            double convaincre = (1 - (0.25, (1./1.+this->getReputation())));
+            // a revoir
+            double aleat = Alea::value()%2;
+            if(aleat == 0)
+            {
+              // le gangster a réussi a convaicre le Policier
+              // a mettre quelque chose ici, le policier recois 2/3 de buttin
+              this->setReputation(0); // le policier perd sa réputation
+              p.parle("Tu vois, " + this->getNom() + ", je vavais bien qu'on pourrait s'arranger....");
+            }else{
+              // le gangster n'a pas réussi a convaicre le Policier
+              this->parle("Misirable "+ p.getNom() + ", tu me crois aussi cupide et malfaisant que toi?");
+              this->incrementePopularite();
+            }
+          }
       }
+
+      p.setPrison(true);          /*le gangster emprisonné*/
+      this->setReputation(p.getRecompense());  /* La recompense du gangster versé au policier*/
+      p.effaceRecompense();       /*remise à zero de la recompense du gangster*/
+      p.setButin(0);              // le buttin du gangster confisqué
+
+      /*Un gangster peut s evader de prison*/
+      /*On consider que il a une chance sur 2 de s'evader */
+      long tirAl = Alea::value()%2;
+      if(tirAl == 0)
+      {
+        /*le gangster s'evade de prison*/
+        p.sEvade();
+      }
+
+
     }else{
       // le gangster gagne
       this->decrementePopularite();

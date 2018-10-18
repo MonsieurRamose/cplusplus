@@ -24,11 +24,20 @@ bool Gangster::estEnPrison()
 {
   return enPrison;
 }
+
+void Gangster::setPrison(bool b)
+{
+  enPrison = b;
+}
 long Gangster::getButin()
 {
   return butin;
 }
 
+void Gangster::setButin(long bt)
+{
+  butin = bt;
+}
  //
  // Heritiere* Gangster::getHeritiere()
  // {
@@ -89,10 +98,13 @@ bool Gangster::estCapture(Personnage& p)
   }
   false;
 }
+
 void Gangster::sEvade()
 {
+  this->setPrison(false);
   this->setRecompense(100);
 }
+
 void Gangster::augmenteRecompense()
 {
   this->recompense += 100;
