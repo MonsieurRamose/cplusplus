@@ -16,13 +16,13 @@ int main()
     Lieu * london = new Lieu("london");
     Lieu * lehavre = new Lieu("lehavre");
     Gangster *p = new Gangster("Alcapone", "gang des 4");
-    Policier *p2 = new Policier("mr policier", lehavre);
+    Policier *p2 = new Policier("mr policier", lehavre, london);
     Heritiere *alice= new Heritiere("Alice");
     p->recupereBijoux(*alice);
     std::cout <<"mon buttin est "<< p->getButin()<<std::endl;
     Scenario s;
     s.initScenario();
-    s.getPersonnages()[2]->action();
+    s.getPersonnages()[5]->action();
     delete alice;
     delete paris;
 

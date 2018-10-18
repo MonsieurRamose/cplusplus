@@ -26,6 +26,6 @@ class Scenario{
       void initLieu();
       void initPersonnage();
       void initScenario();
-      Lieu* Personnage::getVilleByNumero(long n)
+      Lieu* getVilleByNumero(long n);
 };
 #endif

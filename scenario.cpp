@@ -110,14 +110,14 @@ void Scenario::initScenario(){
   initPersonnage();
 
   }
- Lieu* Personnage::getVilleByNumero(long n)
+
+ Lieu* Scenario::getVilleByNumero(long n)
  {
    for (int i = 0; i < getNbVilles(); i++) {
-     if(n == villes[i]->numero)
+     if(n == villes[i]->getNumero())
      {
        return villes[i];
      }
-     /* code */
    }
    return NULL;
  }

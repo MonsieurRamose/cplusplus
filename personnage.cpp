@@ -50,7 +50,6 @@ void Personnage::deplace(std::string transport, Lieu* l)
 {
   int i=0;
   long n =0;
-   std::cout <<" "<< "dans la fct deplace"<<std::endl;
  if(transport == "train")
  {
 
@@ -116,34 +115,30 @@ void Personnage::setScenario(Scenario* s)
 
 void Personnage::action()
 {
-
-
-
-
-
-  // probleme dans cette fonction au moment d appel a deplace
-/*  srand(time(NULL));
-  int al = rand()%3;*/
   long al = (Alea::value()%3);
 
   if(al == 0)
   {
-    std::cout<<" Je reste dans la meme ville"<<std::endl;
+    std::cout<<" Je suis "<< getNom() <<" et je reste dans la meme ville"<<std::endl;
   }else{
-    std::cout<<" Je change de ville "<<std::endl;
+    std::cout<<" Je suis "<< getNom() <<" et je change de ville "<<std::endl;
     int tir = Alea::value()%(scenario->getNbVilles());
 
-    std::cout<<"le tirage est: " <<tir <<" ville"<<scenario->getVilles()[tir]->getNom()<<std::endl;
-    if(al == 1)  // il se deplace en train
+    std::cout<<"le tirage est: " <<tir <<" ville "<<scenario->getVilles()[tir]->getNom()<<std::endl;
+    if(scenario->getVilleByNumero(tir) !=NULL)
     {
+      if(al == 1)  // il se deplace en train
+      {
 
-      this->deplace("train", scenario->getVilles()[tir]);
+          this->deplace("train", scenario->getVilleByNumero(tir));
 
-    }else{
-      // il se deplace en bateau
-      this->deplace("bateau", scenario->getVilles()[tir]);
+      }else{
+        // il se deplace en bateau
+        this->deplace("bateau", scenario->getVilleByNumero(tir));
 
+      }
     }
+
   }
 
 

@@ -24,6 +24,7 @@ class Lieu {
     const std::string & getNom();
     int getNbBateau();
     int getNbTrain();
+    long getNumero();
     Lieu** getTrains();
     Lieu** getBateaux();
     void afficherConnexion();

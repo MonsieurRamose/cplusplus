@@ -30,8 +30,7 @@ class Personnage
     virtual std::list<Bijou *> enleveBijoux();
 
      void action();
-
-    
+     
 };
 
 #endif

@@ -1,7 +1,7 @@
 #include "policier.h"
 
 // Attention à lieu (par rapport à sa modification)
-Policier::Policier(std::string _nom, Lieu* _lieu, Lieu* pl) : Personnage(_nom), Lieu(_lieu), plieu(pl), reputation(0)
+Policier::Policier(std::string _nom, Lieu* _lieu, Lieu* pl) : Personnage(_nom, _lieu), plieu(pl), reputation(0)
 {
 }
 
