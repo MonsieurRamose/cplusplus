@@ -20,6 +20,9 @@ int main()
     Heritiere *alice= new Heritiere("Alice");
     p->recupereBijoux(*alice);
     std::cout <<"mon buttin est "<< p->getButin()<<std::endl;
+    Scenario s;
+    s.initScenario();
+    s.getPersonnages()[2]->action();
     delete alice;
     delete paris;
 
@@ -35,11 +38,11 @@ int main()
     // alcapone.recupereBijoux(*alice);
     // delete alice;
     //
-    Alea a;
-     cout << Alea::value() << endl;
-     cout << Alea::value() << endl;
-     cout << Alea::value() << endl;
-     cout << Alea::value() << endl;
+    // Alea a;
+    //  cout << Alea::value() << endl;
+    //  cout << Alea::value() << endl;
+    //  cout << Alea::value() << endl;
+    //  cout << Alea::value() << endl;
 
    // Lieu * douvres = new Lieu ("douvres");
    // Lieu * bordeaux = new Lieu ("bordeaux");

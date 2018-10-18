@@ -4,6 +4,7 @@
 #include <list>
 #include "lieu.h"
 #include "bijou.h"
+class Scenario;
 
 class Personnage
 {
@@ -11,6 +12,7 @@ class Personnage
     std::string nom;
     Lieu* lieu;
     std::list<Bijou *> possessions;
+    Scenario* scenario;
   public:
     Personnage();
     Personnage(const std::string &_nom);
@@ -18,6 +20,7 @@ class Personnage
     virtual ~Personnage();
 
     std::string& getNom();
+    void setScenario(Scenario* s);
     Lieu* getLieu();
     void setLieu(Lieu* l);
     void parle(const std::string &texte);
@@ -25,6 +28,10 @@ class Personnage
 
     virtual void recupereBijoux(Personnage& p);
     virtual std::list<Bijou *> enleveBijoux();
+
+     void action();
+
+    
 };
 
 #endif

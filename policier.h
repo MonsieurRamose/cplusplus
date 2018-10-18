@@ -9,16 +9,20 @@
 class Policier :public Personnage
 {
     private:
-        Lieu* lieu;
+        Lieu* plieu;
         int reputation;
 
     public:
-        Policier(std::string _nom, Lieu* _lieu);
-        Lieu* getLieu();
+        Policier(std::string _nom, Lieu* _lieu, Lieu* pl);
+        Lieu* getPlieu();
         void setReputation(int _reputation);
         int getReputation();
-      /*  void recupereBijoux(Personnage &p);
-        std::list<Bijou*> enleveBijoux();*/
+      /*  void libere(Personnage &p);
+        void attaque(Personnage& p);
+        void incrementePopularite();
+        void decrementePopularite();*/
+
+
 };
 
 

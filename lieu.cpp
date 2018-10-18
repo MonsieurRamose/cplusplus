@@ -300,19 +300,27 @@ bool Lieu::estAccessible(std::string transport, Lieu* lieu)
 
 }
 
-long Lieu::distance(const std::string &moyen, Lieu* l) {
-
+long Lieu::distance(const std::string &moyen, Lieu* l)
+{
+    std::cout<<"dans la fct distance "<< moyen<<" "<<l->getNom()<<std::endl;
     if (this->estAccessible(moyen, l))
+    {
+      std::cout<<"est accessible"<<std::endl;
         return 1;
+    }
+    std::cout<<"dans=============== "<< moyen<<" "<<l->getNom()<<std::endl;
 
     Lieu* start = this;
 
     std::queue<std::pair<Lieu*, long> > file;
     file.push(std::make_pair(start, 1));
 
+    std::cout<<"dernier numero"<<Lieu::DERNIER_NUMERO<<std::endl;
+
     bool *visited = new bool[Lieu::DERNIER_NUMERO];
     for (int i = 0; i < Lieu::DERNIER_NUMERO; i++)
     {
+      std::cout<<"dans le premier for"<<std::endl;
       visited[i] = false;
     }
 
@@ -320,6 +328,7 @@ long Lieu::distance(const std::string &moyen, Lieu* l) {
 
     while (!file.empty())
     {
+        std::cout<<"dans le while"<<std::endl;
         Lieu* u = file.front().first;
         long dis = file.front().second;
         file.pop();
@@ -329,6 +338,7 @@ long Lieu::distance(const std::string &moyen, Lieu* l) {
 
         for(int i = 0; i < nbTrain; i++)
         {
+          std::cout<<"dans la for"<<std::endl;
             Lieu* destination = u->train[i];
             if (u->estAccessible(moyen, destination) && !visited[destination->numero])
             {
@@ -349,8 +359,12 @@ long Lieu::distance(const std::string &moyen, Lieu* l) {
             }
         }
     }
+    if(visited != NULL)
+    {
+      delete visited;
+    }
 
-    delete visited;
+    std::cout<<"max"<<maxDis<<std::endl;
     return (maxDis == 100) ? -1 : maxDis;
 }
 

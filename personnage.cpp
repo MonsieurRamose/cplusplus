@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "personnage.h"
+#include "alea.h"
+#include "scenario.h"
 
 
 Personnage::Personnage(const std::string &_nom) : nom(_nom)
@@ -48,9 +50,12 @@ void Personnage::deplace(std::string transport, Lieu* l)
 {
   int i=0;
   long n =0;
+   std::cout <<" "<< "dans la fct deplace"<<std::endl;
  if(transport == "train")
  {
+
    n = lieu->distance(transport, l);
+   std::cout <<" "<< "la distance est "<<n <<std::endl;
    if (n != -1)
    {
      setLieu(l);
@@ -102,4 +107,44 @@ std::list<Bijou *> Personnage::enleveBijoux()
   std::list<Bijou*> biens = possessions;
   possessions.clear();
   return biens;
+}
+
+void Personnage::setScenario(Scenario* s)
+{
+  scenario = s;
+}
+
+void Personnage::action()
+{
+
+
+
+
+
+  // probleme dans cette fonction au moment d appel a deplace
+/*  srand(time(NULL));
+  int al = rand()%3;*/
+  long al = (Alea::value()%3);
+
+  if(al == 0)
+  {
+    std::cout<<" Je reste dans la meme ville"<<std::endl;
+  }else{
+    std::cout<<" Je change de ville "<<std::endl;
+    int tir = Alea::value()%(scenario->getNbVilles());
+
+    std::cout<<"le tirage est: " <<tir <<" ville"<<scenario->getVilles()[tir]->getNom()<<std::endl;
+    if(al == 1)  // il se deplace en train
+    {
+
+      this->deplace("train", scenario->getVilles()[tir]);
+
+    }else{
+      // il se deplace en bateau
+      this->deplace("bateau", scenario->getVilles()[tir]);
+
+    }
+  }
+
+
 }

@@ -1,13 +1,13 @@
 #include "policier.h"
 
 // Attention à lieu (par rapport à sa modification)
-Policier::Policier(std::string _nom, Lieu* _lieu) : Personnage(_nom), lieu(_lieu), reputation(0)
+Policier::Policier(std::string _nom, Lieu* _lieu, Lieu* pl) : Personnage(_nom), Lieu(_lieu), plieu(pl), reputation(0)
 {
 }
 
-Lieu* Policier::getLieu()
+Lieu* Policier::getPlieu()
 {
-    return lieu;
+    return plieu;
 }
 
 int Policier::getReputation()
@@ -35,5 +35,31 @@ std::list<Bijou*> Policier::enleveBijoux()
   std::list<Bijou*> biens = possessions;
   possessions.clear();
   return biens;
+}
+*/
+
+/*
+void Polocier::libere(Personnage &p)
+{
+  reputation += 2;
+}
+void attaque(Personnage& p)
+{
+  this.action();
+  if(this->lieu->getNom().compare(p.lieu->getNom()) == 0) // s'ils se trouvent dans le meme lieu
+  {
+    std::cout << p.getNom() << ", sortez les mains en l'air"<< std::endl;
+    double pro = (pow(0.75, 1./(getReputation()+1.))) * (1. - (pow(0.75, (10./p.getRecompense()))));
+
+  }
+
+}
+void incrementePopularite()
+{
+  reputation += 1;
+}
+void decrementePopularite()
+{
+  reputation -= 1;
 }
 */

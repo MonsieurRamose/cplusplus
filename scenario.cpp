@@ -94,7 +94,14 @@ void Scenario::initPersonnage()
   personnages[4]=Alain;
   personnages[5]=Dupont;
   personnages[6]=Lola;
+  for (int i = 0; i < 7; i++) {
+    personnages[i]->setScenario(this);
+    /* code */
+  }
+
 }
+
+
 
 
 void Scenario::initScenario(){
@@ -103,3 +110,14 @@ void Scenario::initScenario(){
   initPersonnage();
 
   }
+ Lieu* Personnage::getVilleByNumero(long n)
+ {
+   for (int i = 0; i < getNbVilles(); i++) {
+     if(n == villes[i]->numero)
+     {
+       return villes[i];
+     }
+     /* code */
+   }
+   return NULL;
+ }
