@@ -72,6 +72,9 @@ void Policier::attaque(Gangster& p)
         // le gangster detient une Heritiere
         this->libere(p);
 
+      }else{
+        // le gangster n'a pas detenu d'heritiere
+        
 
       }
     }else{

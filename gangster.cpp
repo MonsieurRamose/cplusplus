@@ -57,3 +57,40 @@ std::list<Bijou*> Gangster::enleveBijoux()
   possessions.clear();
   return biens;
 }
+
+void Gangster::enleve(Personnage& p)
+{
+  if(estCapture(p))
+  {
+    this->setPers(p); // un gangster a capturé une heritiere
+    p.setCaptive(true);
+    p.parle("A l'aide! je suis " + p.getNom() + ", on m'enlève! Sauvez-moi ! ");
+    this->parle(p.getNom() + ", tu es maitenant à la merci du gang " + this->getGang());
+    this->augmenteRecompense(); // la recompense du gangter augmente de 100
+  }
+
+}
+bool Gangster::estCapture(Personnage& p)
+{
+  // l'enlevement de l'heritiere reussit une chance sur trois
+  long al = (Alea::value()%3);
+  if(al == 0)
+  {
+    // enlevement de l'heritiere
+    return true;
+  }
+  false;
+}
+bool Gangster::sEvade()
+{
+
+}
+void Gangster::augmenteRecompense()
+{
+  this->recompense += 100;
+}
+void Gangster::effaceRecompense()
+{
+
+  this->recompense = 0;
+}

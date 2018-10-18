@@ -14,7 +14,18 @@ bool Heritiere::estCaptive()
 {
     return captive;
 }
+void Heritiere::setCaptive(bool c)
+{
+  captive = c;
+}
+bool Heritiere::estEnlevee(Personnage& p)
+{
 
+}
+bool Heritiere::estLiberee(Personnage& p)
+{
+
+}
 // Gangster* Heritiere::getGangster()
 // {
 //   return gangster;

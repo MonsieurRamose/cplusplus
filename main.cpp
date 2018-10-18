@@ -18,13 +18,11 @@ int main()
     Gangster *alcapone = new Gangster("Alcapone", "gang des 4");
     Policier *p2 = new Policier("mr policier", lehavre, london);
     Heritiere *alice= new Heritiere("Alice");
-    p->recupereBijoux(*alice);
-    std::cout <<"mon buttin est "<< p->getButin()<<std::endl;
+    alcapone->recupereBijoux(*alice);
+    std::cout <<"mon buttin est "<< alcapone->getButin()<<std::endl;
     Scenario s;
     s.initScenario();
     s.getPersonnages()[5]->action();
-
-
 
     delete alice;
     delete paris;

@@ -5,6 +5,7 @@
 #include <string>
 #include "personnage.h"
 #include "bijou.h"
+#include "alea.h"
 //#include "heritiere.h"
 
 class Gangster: public Personnage
@@ -30,6 +31,11 @@ class Gangster: public Personnage
     // void setHeritiere(Heritiere* h);
     void recupereBijoux(Personnage &p);
     virtual std::list<Bijou*> enleveBijoux();
+   void enleve(Personnage& p);
+    bool estCapture(Personnage& p);
+    bool sEvade();
+    void augmenteRecompense();
+    void effaceRecompense();
 };
 
 #endif

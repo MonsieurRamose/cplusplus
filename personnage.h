@@ -4,6 +4,7 @@
 #include <list>
 #include "lieu.h"
 #include "bijou.h"
+#include "alea.h"
 class Scenario;
 
 class Personnage

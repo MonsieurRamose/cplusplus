@@ -15,6 +15,9 @@ class Heritiere : public Personnage
     public:
         Heritiere(std::string _nom);
         bool estCaptive();
+        void setCaptive(bool c);
+        bool estEnlevee(Personnage& p);
+        bool estLiberee(Personnage& p);
         // Gangster* getGangster();
         // void setGangster(Gangster* g);
         // void recupereBijoux(Personnage &p);

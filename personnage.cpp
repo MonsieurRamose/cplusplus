@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include "personnage.h"
-#include "alea.h"
 #include "scenario.h"
 
 
