@@ -20,10 +20,24 @@ void Heritiere::setCaptive(bool c)
 }
 bool Heritiere::estEnlevee(Personnage& p)
 {
-
+  // si l'heritiere est enlevee par le gangster passé en paramètre
+  Personnage::estEnlevee(p);
+  //j ai retiré && p.estCaptive()
+  if(p.getPers() != NULL && p.getPers()->getNom().compare(this->getNom()) )
+  {
+    return true;
+  }
+  return false;
 }
 bool Heritiere::estLiberee(Personnage& p)
 {
+  /* regarder si l heritiere est liberée par la personne p qui l a enlevé*/
+  Personnage::estLiberee(p);
+  if((p.getPers() == NULL) && !(this->estCaptive()))
+  {
+    return true;
+  }
+  return false;
 
 }
 // Gangster* Heritiere::getGangster()

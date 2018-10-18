@@ -44,15 +44,18 @@ std::list<Bijou*> Policier::enleveBijoux()
 void Policier::libere(Personnage &p)
 {
   //liberer l'heritiere detenu par le gangster p
+  Personnage::libere(p); // appeler la méthode de la super classe
   Personnage* h = p.getPers();
   p.setPers(NULL);
   h->parle("Grand merci "+ this->getNom() +" vous m'avez sauvé");
+  //h->setCaptive(false);
   reputation += 2;
 }
 
 
 void Policier::attaque(Gangster& p)
 {
+  Personnage::attaque(p);
   this->action();
 
   if(this->lieu->getNom().compare(p.getLieu()->getNom()) == 0) // s'ils se trouvent dans le meme lieu
@@ -74,7 +77,7 @@ void Policier::attaque(Gangster& p)
 
       }else{
         // le gangster n'a pas detenu d'heritiere
-        
+
 
       }
     }else{

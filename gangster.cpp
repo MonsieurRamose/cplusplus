@@ -16,6 +16,10 @@ long Gangster::getRecompense()
 {
   return recompense;
 }
+void  Gangster::setRecompense(long rec)
+{
+  recompense = rec;
+}
 bool Gangster::estEnPrison()
 {
   return enPrison;
@@ -60,10 +64,13 @@ std::list<Bijou*> Gangster::enleveBijoux()
 
 void Gangster::enleve(Personnage& p)
 {
+  Personnage::enleve(p);
   if(estCapture(p))
   {
-    this->setPers(p); // un gangster a capturé une heritiere
-    p.setCaptive(true);
+    // A BIEN REGARDER, JE NE SUIS PAS SUR
+
+    setPers(NULL); // un gangster a capturé une heritiere
+    //p.setCaptive(true);
     p.parle("A l'aide! je suis " + p.getNom() + ", on m'enlève! Sauvez-moi ! ");
     this->parle(p.getNom() + ", tu es maitenant à la merci du gang " + this->getGang());
     this->augmenteRecompense(); // la recompense du gangter augmente de 100
@@ -72,6 +79,7 @@ void Gangster::enleve(Personnage& p)
 }
 bool Gangster::estCapture(Personnage& p)
 {
+  Personnage::estCapture(p);
   // l'enlevement de l'heritiere reussit une chance sur trois
   long al = (Alea::value()%3);
   if(al == 0)
@@ -81,9 +89,9 @@ bool Gangster::estCapture(Personnage& p)
   }
   false;
 }
-bool Gangster::sEvade()
+void Gangster::sEvade()
 {
-
+  this->setRecompense(100);
 }
 void Gangster::augmenteRecompense()
 {

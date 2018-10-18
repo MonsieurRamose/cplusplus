@@ -25,15 +25,16 @@ class Gangster: public Personnage
   public:
     std::string getGang();
     long getRecompense();
+    void setRecompense(long rec);
     bool estEnPrison();
     long getButin();
     // Heritiere* getHeritiere();
     // void setHeritiere(Heritiere* h);
     void recupereBijoux(Personnage &p);
     virtual std::list<Bijou*> enleveBijoux();
-   void enleve(Personnage& p);
+    void enleve(Personnage& p);
     bool estCapture(Personnage& p);
-    bool sEvade();
+    void sEvade();
     void augmenteRecompense();
     void effaceRecompense();
 };

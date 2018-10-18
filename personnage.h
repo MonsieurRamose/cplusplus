@@ -32,6 +32,13 @@ class Personnage
     virtual void recupereBijoux(Personnage& p);
     virtual std::list<Bijou *> enleveBijoux();
      void action();
+     virtual void libere(Personnage &p);
+     virtual void attaque(Personnage& p);
+     virtual bool estEnlevee(Personnage& p);
+     virtual bool estLiberee(Personnage& p);
+     virtual void enleve(Personnage& p);
+     virtual bool estCapture(Personnage& p);
+
 
 };
 

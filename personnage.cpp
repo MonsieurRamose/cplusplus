@@ -147,8 +147,29 @@ void Personnage::action()
 
       }
     }
-
   }
+}
 
+void Personnage::libere(Personnage &p)
+{
+}
+void Personnage::attaque(Personnage& p)
+{
+
+}
+bool Personnage::estEnlevee(Personnage& p)
+{
+
+}
+bool Personnage::estLiberee(Personnage& p)
+{
+
+}
+void Personnage::enleve(Personnage& p)
+{
+
+}
+bool Personnage::estCapture(Personnage& p)
+{
 
 }
