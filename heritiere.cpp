@@ -7,12 +7,23 @@ Heritiere::Heritiere(std::string _nom) : Personnage(_nom), captive(false)
     this->possessions.push_back(new Bijou("emeraude", 1000));
     std::cout << "Je suis " << nom << " et je suis une heritiere" << std::endl;
     std::cout << "Je possede une emeraude d'une valeur de 1000" << std::endl;
+    //gangster  = NULL;
 }
 
 bool Heritiere::estCaptive()
 {
     return captive;
 }
+
+// Gangster* Heritiere::getGangster()
+// {
+//   return gangster;
+// }
+// void heritiere::setGangster(Gangster* g)
+//  {
+//    gangster = g;
+//  }
+
 /*
 void Heritiere::recupereBijoux(Personnage &p)
 {

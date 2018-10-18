@@ -4,6 +4,7 @@
 
 Gangster::Gangster(std::string _nom, std::string _gang) : Personnage(_nom), gang(_gang), recompense(100), enPrison(false), butin(0)
 {
+  //heritiere = NULL;
   std::cout << "Je suis " << this->getNom() << ", membre du gang " << gang << std::endl;
 }
 
@@ -24,6 +25,15 @@ long Gangster::getButin()
   return butin;
 }
 
+ //
+ // Heritiere* Gangster::getHeritiere()
+ // {
+ //   return heritiere;
+ // }
+ // void Gangster::setHeritiere(Heritiere* h)
+ // {
+ //   heritiere = h;
+ // }
 void Gangster::recupereBijoux(Personnage &p)
 {
   std::list<Bijou*> bijouxEnleve = p.enleveBijoux();

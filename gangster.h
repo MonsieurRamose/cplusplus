@@ -5,6 +5,7 @@
 #include <string>
 #include "personnage.h"
 #include "bijou.h"
+//#include "heritiere.h"
 
 class Gangster: public Personnage
 {
@@ -13,6 +14,7 @@ class Gangster: public Personnage
     long recompense;
     bool enPrison;
     long butin;
+  //  Heritiere* heritiere;
 
   private:
     Gangster();
@@ -24,6 +26,8 @@ class Gangster: public Personnage
     long getRecompense();
     bool estEnPrison();
     long getButin();
+    // Heritiere* getHeritiere();
+    // void setHeritiere(Heritiere* h);
     void recupereBijoux(Personnage &p);
     virtual std::list<Bijou*> enleveBijoux();
 };

@@ -13,6 +13,7 @@ class Personnage
     Lieu* lieu;
     std::list<Bijou *> possessions;
     Scenario* scenario;
+    Personnage* pers;
   public:
     Personnage();
     Personnage(const std::string &_nom);
@@ -23,14 +24,14 @@ class Personnage
     void setScenario(Scenario* s);
     Lieu* getLieu();
     void setLieu(Lieu* l);
+    Personnage* getPers();
+    void setPers(Personnage* p);
     void parle(const std::string &texte);
     void deplace(std::string, Lieu* l);
-
     virtual void recupereBijoux(Personnage& p);
     virtual std::list<Bijou *> enleveBijoux();
-
      void action();
-     
+
 };
 
 #endif

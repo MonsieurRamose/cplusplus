@@ -12,6 +12,7 @@ Personnage::Personnage(const std::string &_nom) : nom(_nom)
 
 Personnage::Personnage(const std::string &_nom, Lieu* l) : nom(_nom),lieu(l)
 {
+  pers = NULL;
   std::cout << "Bonjour, je suis " << nom << " et je viens d'arriver en ville " <<l->getNom()<< std::endl;
 }
 
@@ -42,6 +43,15 @@ void Personnage::setLieu(Lieu* l)
   lieu = l;
 }
 
+
+Personnage* Personnage::getPers()
+{
+  return pers;
+}
+void Personnage::setPers(Personnage* p)
+{
+  pers = p;
+}
 void Personnage::parle(const std::string &texte)
 {
   std::cout << nom << ":" << texte << std::endl;

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include "personnage.h"
-//#include "lieu.h"
+#include "gangster.h"
 
 class Policier :public Personnage
 {
@@ -17,10 +17,10 @@ class Policier :public Personnage
         Lieu* getPlieu();
         void setReputation(int _reputation);
         int getReputation();
-      /*  void libere(Personnage &p);
-        void attaque(Personnage& p);
+        void libere(Personnage &p);
+        void attaque(Gangster& p);
         void incrementePopularite();
-        void decrementePopularite();*/
+        void decrementePopularite();
 
 
 };
