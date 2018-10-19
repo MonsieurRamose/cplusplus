@@ -52,5 +52,8 @@ int main()
    // std::cout<<s.getPersonnages()[4]->getLieu()->getNom()<<std::endl;
    // s.getPersonnages()[4]->deplace("bateau", bordeaux);*/
 
+   Scenario s;
+   s.initScenario();
+   s.scene();
     return 0;
 }

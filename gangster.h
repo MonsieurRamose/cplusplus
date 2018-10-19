@@ -6,6 +6,7 @@
 #include "personnage.h"
 #include "bijou.h"
 #include "alea.h"
+#include "scenario.h"
 //#include "heritiere.h"
 
 class Gangster : public Personnage {
@@ -20,6 +21,7 @@ private:
     Gangster();
 
 public:
+    Gangster(std::string _nom, Lieu *_lieu);
     Gangster(std::string _nom, std::string _gang);
 
 public:

@@ -1,9 +1,8 @@
 #ifndef SCENARIO_H
 #define SCENARIO_H
 #include <string>
-#include"personnage.h"
 #include "lieu.h"
-//class Personnage;
+class Personnage;
 //class Lieu;
 
 class Scenario{
@@ -27,5 +26,6 @@ class Scenario{
       void initPersonnage();
       void initScenario();
       Lieu* getVilleByNumero(long n);
+      void scene();
 };
 #endif

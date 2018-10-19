@@ -2,9 +2,14 @@
 #include <string>
 #include "gangster.h"
 
+
+Gangster::Gangster(std::string _nom, Lieu *_lieu) : Personnage(_nom, _lieu), gang(" "), recompense(100), enPrison(false), butin(0)
+{
+
+}
+
 Gangster::Gangster(std::string _nom, std::string _gang) : Personnage(_nom), gang(_gang), recompense(100), enPrison(false), butin(0)
 {
-  //heritiere = NULL;
   std::cout << "Je suis " << this->getNom() << ", membre du gang " << gang << std::endl;
 }
 
@@ -117,7 +122,7 @@ void Gangster::effaceRecompense()
 
 void Gangster::interaction(Scenario &s) {
   std::cout << "Interaction heritiere" << std::endl;
-  for(int j = 0; j = s.getPersonnages(); j++) {
+  for(int j = 0; j < s.getNbPers(); j++) {
     Personnage* personnage = s.getPersonnages()[j];
     if(personnage->getLieu()->getNom().compare(this->getLieu()->getNom()) ) {
       personnage->attaque(*this);

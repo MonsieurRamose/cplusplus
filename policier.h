@@ -5,6 +5,7 @@
 #include <string>
 #include "personnage.h"
 #include "gangster.h"
+#include "scenario.h"
 
 class Policier : public Personnage {
 private:
@@ -13,6 +14,8 @@ private:
     double potDeVin;
 
 public:
+    Policier(std::string _nom, Lieu *_lieu);
+
     Policier(std::string _nom, Lieu *_lieu, Lieu *pl);
 
     Lieu *getPlieu();

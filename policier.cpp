@@ -1,9 +1,13 @@
 #include "policier.h"
 #include "alea.h"
-#include "cmath"
+#include <cmath>
 
 // Attention à lieu (par rapport à sa modification)
-Policier::Policier(std::string _nom, Lieu *_lieu, Lieu *pl) : Personnage(_nom, _lieu), plieu(pl), reputation(0) {
+
+Policier::Policier(std::string _nom, Lieu *_lieu): Personnage(_nom, _lieu), reputation(0), potDeVin(0){
+
+}
+Policier::Policier(std::string _nom, Lieu *_lieu, Lieu *pl) : Personnage(_nom, _lieu), plieu(pl), reputation(0), potDeVin(0) {
 }
 
 Lieu *Policier::getPlieu() {
@@ -89,10 +93,11 @@ void Policier::attaque(Gangster &p) {
                     if (aleat == 0) {
                         // le gangster a réussi a convaicre le Policier
 
-                       // this->setPotDeVin(())
-                        // a mettre quelque chose ici, le policier recois 2/3 de buttin
+                        this->setPotDeVin(floor((2/3)*p.getButin()));
+
+
                         this->setReputation(0); // le policier perd sa réputation
-                        p.parle("Tu vois, " + this->getNom() + ", je vavais bien qu'on pourrait s'arranger....");
+                        p.parle("Tu vois, " + this->getNom() + ", je savais bien qu'on pourrait s'arranger....");
                     } else {
                         // le gangster n'a pas réussi a convaicre le Policier
                         this->parle("Misirable " + p.getNom() + ", tu me crois aussi cupide et malfaisant que toi?");
@@ -134,7 +139,7 @@ void Policier::attaque(Gangster &p) {
 
 void Policier::interaction(Scenario &s) {
     std::cout << "Interaction heritiere" << std::endl;
-    for(int j = 0; j = s.getPersonnages(); j++) {
+    for(int j = 0; j < s.getNbPers(); j++) {
         Personnage* personnage = s.getPersonnages()[j];
         if(personnage->getLieu()->getNom().compare(this->getLieu()->getNom()) ) {
             personnage->estCapture(*this);

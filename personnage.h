@@ -6,8 +6,7 @@
 #include "lieu.h"
 #include "bijou.h"
 #include "alea.h"
-
-class Scenario;
+#include "scenario.h"
 
 class Personnage {
 protected:

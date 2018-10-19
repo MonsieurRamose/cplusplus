@@ -108,6 +108,7 @@ void Personnage::setScenario(Scenario *s) {
 }
 
 void Personnage::action() {
+  
     long al = (Alea::value() % 3);
 
     if (al == 0) {
@@ -118,7 +119,7 @@ void Personnage::action() {
 
         std::cout << "le tirage est: " << tir << " ville " << scenario->getVilles()[tir]->getNom() << std::endl;
         if (scenario->getVilleByNumero(tir) != NULL) {
-            if (al == 1)  // il se deplace en train{
+            if (al == 1) { // il se deplace en train
 
                 this->deplace("train", scenario->getVilleByNumero(tir));
 

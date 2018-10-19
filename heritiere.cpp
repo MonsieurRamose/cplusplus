@@ -10,6 +10,15 @@ Heritiere::Heritiere(std::string _nom) : Personnage(_nom), captive(false)
     //gangster  = NULL;
 }
 
+Heritiere::Heritiere(std::string _nom, Lieu * _lieu): Personnage(_nom, _lieu), captive(false)
+ {
+    std::cout << "Je suis " << nom << " et je suis une heritiere, et je viens d'arriver dans la ville " << _lieu->getNom() << std::endl;
+    std::cout << "Je possede une emeraude d'une valeur de 1000" << std::endl;
+    this->possessions.push_back(new Bijou("emeraude", 1000));
+}
+
+
+
 bool Heritiere::estCaptive()
 {
     return captive;
@@ -41,15 +50,9 @@ bool Heritiere::estLiberee(Personnage& p)
 
 }
 
-Heritiere::Heritiere(const char *_nom, Lieu *_lieu) {
-    std::cout << "Je suis " << nom << " et je suis une heritiere, et je viens d'arriver dans la ville " << _lieu->getNom() << std::endl;
-    this->possessions.push_back(new Bijou("emeraude", 1000));
-    std::cout << "Je possede une emeraude d'une valeur de 1000" << std::endl;
-}
-
 void Heritiere::interaction(Scenario &s) {
     std::cout << "Interaction heritiere" << std::endl;
-    for(int j = 0; j = s.getPersonnages(); j++) {
+    for(int j = 0; j < s.getNbPers(); j++) {
         Personnage* personnage = s.getPersonnages()[j];
         if(personnage->getLieu()->getNom().compare(this->getLieu()->getNom()) ) {
             personnage->enleve(*this);
@@ -64,40 +67,12 @@ Heritiere::~Heritiere() {
 
 }
 
-void Heritiere::libere(Personnage &p) {
-    Personnage::libere(p);
+
+bool Heritiere::testHeritiere(Scenario& s) {
+  bool ok = false;
+
+
+  estEnlevee();
+  estLiberee();
+  estCaptive();
 }
-
-void Heritiere::attaque(Personnage &p) {
-    Personnage::attaque(p);
-}
-
-bool Heritiere::estCapture(Personnage &p) {
-    return Personnage::estCapture(p);
-}
-// Gangster* Heritiere::getGangster()
-// {
-//   return gangster;
-// }
-// void heritiere::setGangster(Gangster* g)
-//  {
-//    gangster = g;
-//  }
-
-/*
-void Heritiere::recupereBijoux(Personnage &p)
-{
-  std::list<Bijou*> bijouxEnleve = p.enleveBijoux();
-
-  for (std::list<Bijou*>::iterator it = bijouxEnleve.begin(); it != bijouxEnleve.end(); ++it)
-  {
-    possessions.push_back(*it);
-  }
-}
-
-std::list<Bijou*> Heritiere::enleveBijoux()
-{
-  std::list<Bijou*> biens = possessions;
-  possessions.clear();
-  return biens;
-}*/

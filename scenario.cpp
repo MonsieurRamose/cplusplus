@@ -116,3 +116,11 @@ Lieu *Scenario::getVilleByNumero(long n) {
     }
     return NULL;
 }
+
+void Scenario::scene()
+{
+  for(int i = 0; i < nbPers; i++) {
+    personnages[i]->action();
+    personnages[i]->interaction(*this);
+  }
+}
