@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-    Lieu * paris = new Lieu("paris");
+    /*Lieu * paris = new Lieu("paris");
     Lieu * london = new Lieu("london");
     Lieu * lehavre = new Lieu("lehavre");
     Gangster *alcapone = new Gangster("Alcapone", "gang des 4");
@@ -50,7 +50,7 @@ int main()
    // Scenario s;
    // s.initScenario();
    // std::cout<<s.getPersonnages()[4]->getLieu()->getNom()<<std::endl;
-   // s.getPersonnages()[4]->deplace("bateau", bordeaux);
+   // s.getPersonnages()[4]->deplace("bateau", bordeaux);*/
 
     return 0;
 }

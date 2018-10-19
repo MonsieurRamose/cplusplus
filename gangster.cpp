@@ -114,3 +114,14 @@ void Gangster::effaceRecompense()
 
   this->recompense = 0;
 }
+
+void Gangster::interaction(Scenario &s) {
+  std::cout << "Interaction heritiere" << std::endl;
+  for(int j = 0; j = s.getPersonnages(); j++) {
+    Personnage* personnage = s.getPersonnages()[j];
+    if(personnage->getLieu()->getNom().compare(this->getLieu()->getNom()) ) {
+      personnage->attaque(*this);
+      personnage->estEnlevee(*this);
+    }
+  }
+}

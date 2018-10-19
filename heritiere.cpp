@@ -40,6 +40,41 @@ bool Heritiere::estLiberee(Personnage& p)
   return false;
 
 }
+
+Heritiere::Heritiere(const char *_nom, Lieu *_lieu) {
+    std::cout << "Je suis " << nom << " et je suis une heritiere, et je viens d'arriver dans la ville " << _lieu->getNom() << std::endl;
+    this->possessions.push_back(new Bijou("emeraude", 1000));
+    std::cout << "Je possede une emeraude d'une valeur de 1000" << std::endl;
+}
+
+void Heritiere::interaction(Scenario &s) {
+    std::cout << "Interaction heritiere" << std::endl;
+    for(int j = 0; j = s.getPersonnages(); j++) {
+        Personnage* personnage = s.getPersonnages()[j];
+        if(personnage->getLieu()->getNom().compare(this->getLieu()->getNom()) ) {
+            personnage->enleve(*this);
+            personnage->libere(*this);
+        }
+    }
+
+
+}
+
+Heritiere::~Heritiere() {
+
+}
+
+void Heritiere::libere(Personnage &p) {
+    Personnage::libere(p);
+}
+
+void Heritiere::attaque(Personnage &p) {
+    Personnage::attaque(p);
+}
+
+bool Heritiere::estCapture(Personnage &p) {
+    return Personnage::estCapture(p);
+}
 // Gangster* Heritiere::getGangster()
 // {
 //   return gangster;
