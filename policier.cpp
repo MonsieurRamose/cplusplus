@@ -43,19 +43,21 @@ std::list<Bijou*> Policier::enleveBijoux()
 
 void Policier::libere(Personnage &p)
 {
-  //liberer l'heritiere detenu par le gangster p
-  Personnage::libere(p); // appeler la méthode de la super classe
+  //liberer l'heritiere
+  //Personnage::libere(p); // appeler la méthode de la super classe
+
   Personnage* h = p.getPers();
   p.setPers(NULL);
-  h->parle("Grand merci "+ this->getNom() +" vous m'avez sauvé");
-  //h->setCaptive(false);
+  p.parle("Grand merci "+ this->getNom() +" vous m'avez sauvé");
+  h->setPers(NULL);
+  //p.setCaptive(false); // il faut le faire mais comment
   reputation += 2;
 }
 
 
 void Policier::attaque(Gangster& p)
 {
-  Personnage::attaque(p); // appel à la methode de la super classe
+  //Personnage::attaque(p); // appel à la methode de la super classe
   this->action();
 
   if(this->lieu->getNom().compare(p.getLieu()->getNom()) == 0) // s'ils se trouvent dans le meme lieu
