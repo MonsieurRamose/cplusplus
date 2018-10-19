@@ -5,27 +5,57 @@
 #include <string>
 #include "personnage.h"
 #include "bijou.h"
+#include "alea.h"
+#include "scenario.h"
+//#include "heritiere.h"
 
-class Gangster: public Personnage
-{
-  private:
+class Gangster : public Personnage {
+private:
     std::string gang;
     long recompense;
     bool enPrison;
     long butin;
+    //  Heritiere* heritiere;
 
-  private:
+private:
     Gangster();
-  public:
+
+public:
+    Gangster(std::string _nom, Lieu *_lieu);
     Gangster(std::string _nom, std::string _gang);
 
-  public:
+public:
     std::string getGang();
+
     long getRecompense();
+
+    void setRecompense(long rec);
+
     bool estEnPrison();
+
+    void setPrison(bool b);
+
     long getButin();
+
+    void setButin(long bt);
+
+    // Heritiere* getHeritiere();
+    // void setHeritiere(Heritiere* h);
     void recupereBijoux(Personnage &p);
-    virtual std::list<Bijou*> enleveBijoux();
+
+    virtual std::list<Bijou *> enleveBijoux();
+
+    void enleve(Personnage &p);
+
+    bool estCapture(Personnage &p);
+
+    void sEvade();
+
+    void augmenteRecompense();
+
+    void effaceRecompense();
+
+    void interaction(Scenario &s);
 };
 
 #endif

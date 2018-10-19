@@ -4,21 +4,44 @@
 #include <iostream>
 #include <string>
 #include "personnage.h"
-//#include "lieu.h"
+#include "gangster.h"
+#include "scenario.h"
 
-class Policier :public Personnage
-{
-    private:
-        Lieu* lieu;
-        int reputation;
+class Policier : public Personnage {
+private:
+    Lieu *plieu;
+    int reputation;
+    double potDeVin;
 
-    public:
-        Policier(std::string _nom, Lieu* _lieu);
-        Lieu* getLieu();
-        void setReputation(int _reputation);
-        int getReputation();
-        void recupereBijoux(Personnage &p);
-        std::list<Bijou*> enleveBijoux();
+public:
+    Policier(std::string _nom, Lieu *_lieu);
+
+    Policier(std::string _nom, Lieu *_lieu, Lieu *pl);
+
+    Lieu *getPlieu();
+
+    void setReputation(int _reputation);
+
+    int getReputation();
+
+    double getPotDeVin() const;
+
+    void setPotDeVin(double potDeVin);
+
+    void libere(Personnage &p);
+
+    // void attaque(Personnage &p);
+
+    void attaque(Gangster &p);
+
+    void incrementePopularite();
+
+    void decrementePopularite();
+
+    void interaction(Scenario &s);
+
+
+
 };
 
 

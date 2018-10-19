@@ -1,30 +1,64 @@
 #ifndef PERSONNAGE_H
 #define PERSONNAGE_H
+
 #include <string>
 #include <list>
 #include "lieu.h"
 #include "bijou.h"
+#include "alea.h"
+#include "scenario.h"
 
-class Personnage
-{
-  protected:
+class Personnage {
+protected:
     std::string nom;
-    Lieu* lieu;
+    Lieu *lieu;
     std::list<Bijou *> possessions;
-  public:
+    Scenario *scenario;
+    Personnage *pers;
+public:
     Personnage();
+
     Personnage(const std::string &_nom);
-    Personnage(const std::string &_nom, Lieu* l);
+
+    Personnage(const std::string &_nom, Lieu *l);
+
     virtual ~Personnage();
 
-    std::string& getNom();
-    Lieu* getLieu();
-    void setLieu(Lieu* l);
-    void parle(const std::string &texte);
-    void deplace(std::string, Lieu* l);
+    std::string &getNom();
 
-    virtual void recupereBijoux(Personnage& p) = 0;
-    virtual std::list<Bijou *> enleveBijoux() = 0;
+    void setScenario(Scenario *s);
+
+    Lieu *getLieu();
+
+    void setLieu(Lieu *l);
+
+    Personnage *getPers();
+
+    void setPers(Personnage *p);
+
+    void parle(const std::string &texte);
+
+    void deplace(std::string, Lieu *l);
+
+    virtual void recupereBijoux(Personnage &p);
+
+    virtual std::list<Bijou *> enleveBijoux();
+
+    void action();
+
+    virtual void libere(Personnage &p);
+
+    virtual void attaque(Personnage &p);
+
+    virtual bool estEnlevee(Personnage &p);
+
+    virtual bool estLiberee(Personnage &p);
+
+    virtual void enleve(Personnage &p);
+
+    virtual bool estCapture(Personnage &p);
+
+    virtual void interaction(Scenario &s) = 0;
 };
 
 #endif
