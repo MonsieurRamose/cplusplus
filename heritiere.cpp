@@ -32,7 +32,7 @@ bool Heritiere::estEnlevee(Personnage& p)
 bool Heritiere::estLiberee(Personnage& p)
 {
   /* regarder si l heritiere est liberée par la personne p qui l a enlevé*/
-  Personnage::estLiberee(p);
+  
   if((p.getPers() == NULL) && !(this->estCaptive()))
   {
     return true;
